@@ -1,7 +1,15 @@
 Factura::Application.routes.draw do
-  #get \"users\/show\"
+  get "pages/home"
 
-  root :to => "home#index"
+  get "pages/contact"
+
+  #get \"users\/show\"
+  match '/about',   :to => 'pages#about'
+  match '/contact', :to => 'pages#contact'
+  match '/help',    :to => 'pages#help'
+
+  #root :to => "home#index"
+  root :to => "pages#home"
 
   devise_for :users
   resources :users, :only => :show
